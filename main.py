@@ -62,7 +62,7 @@ def countreviews(start_date: str, end_date: str):
     end_date = pd.to_datetime(end_date)
     
     # Filtrar las reviews entre las fechas dadas
-    filtered_reviews = reviews_cleaned[(reviews_cleaned['posted'] >= start_date) & (reviews_cleaned['posted'] <= end_date)]
+    filtered_reviews = reviews[(reviews['posted'] >= start_date) & (reviews['posted'] <= end_date)]
     
     # Calcular la cantidad de usuarios únicos que realizaron reviews en el período
     unique_users = filtered_reviews['user_id'].nunique()
