@@ -16,4 +16,4 @@ sniffio
 starlette
 typing_extensions
 tzdata
-uvicorn==0.23.2
+uvicorn
