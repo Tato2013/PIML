@@ -2,7 +2,7 @@ annotated-types
 anyio
 click
 colorama
-fastapi
+fastapi>=0.65.2
 h11
 idna
 numpy
