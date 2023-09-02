@@ -6,7 +6,7 @@ app = FastAPI()
 
 #DataFrame a utilizar
 reviews=pd.read_parquet('reviews.parquet')
-steam=pd.read_parquet('steam..parquet')
+steam=pd.read_parquet('steam.parquet')
 item=pd.read_parquet('item.parquet')
 
 
@@ -15,7 +15,6 @@ item=pd.read_parquet('item.parquet')
 @app.get('/')
 def root():
     """ Mensaje de bienvenida """
-    
     return {"message" : "Bienvenidos!"}
 
 #Funcio API
