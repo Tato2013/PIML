@@ -9,6 +9,13 @@ reviews=pd.read_parquet('reviews.parquet')
 steam=pd.read_parquet('steam.parquet')
 item=pd.read_parquet('item.parquet')
 
+def obtener_nombre_por_indice(indice):
+    # Implementa la lógica para obtener el nombre del juego por su índice
+    # Debes ajustar esto según cómo estén estructurados tus datos
+    
+    # Ejemplo: Supongamos que los nombres de los juegos están en una columna 'appname'
+    return steam.iloc[indice]['appname']
+
 
 #Mensaje
 
@@ -174,3 +181,32 @@ def sentiment_analysis(año: int):
     conteo_sentimientos = {etiquetas_sentimientos[k]: v for k, v in conteo_sentimientos.items()}
 
     return conteo_sentimientos
+
+
+
+@app.get('/sentiment/{sentimiento}')
+
+
+def recomendacion_juego(id_producto, similarity_matrix, num_recomendaciones=5):
+    # Encuentra el índice del juego correspondiente al ID de producto
+    indice_juego_consulta = obtener_indice_por_id(id_producto)
+    
+    if indice_juego_consulta is None:
+        return None  # El juego no se encontró en la base de datos
+    
+    # Obtén las puntuaciones de similitud del juego de consulta con todos los juegos
+    similitudes_con_juego_consulta = similarity_matrix[indice_juego_consulta]
+    
+    # Enumera los juegos y sus puntuaciones de similitud con respecto al juego de consulta
+    juegos_y_similitudes = list(enumerate(similitudes_con_juego_consulta))
+    
+    # Ordena la lista por similitud en orden descendente
+    juegos_y_similitudes_ordenados = sorted(juegos_y_similitudes, key=lambda x: x[1], reverse=True)
+    
+    # Selecciona los juegos más similares (excluyendo el juego de consulta en sí)
+    juegos_recomendados = juegos_y_similitudes_ordenados[1:num_recomendaciones + 1]
+    
+    # Obtiene los nombres de los juegos recomendados en forma de un diccionario
+    recomendaciones = {i + 1: obtener_nombre_por_indice(indice) for i, (indice, _) in enumerate(juegos_recomendados)}
+    
+    return recomendaciones
