@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, HTTPException, Path
 
 app = FastAPI()
 
@@ -22,7 +22,11 @@ def root():
 #Funcion para devolver dinero gastado y recomendaciones
 
 @app.get('/user_id/{user_id}')
-def userdata(user_id: str):
+def userdata(user_id: str = Path(..., title="User ID", description="ID del usuario a consultar")):
+    # Validar que el usuario exista en tus datos
+    if user_id not in item['user_id'].values:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+
     # Filtrar los datos relevantes del usuario en df_item y hacer el join con steam
     user_data = item[item['user_id'] == user_id].explode('item_id').merge(
         steam[['item_id', 'price']], on='item_id', how='left')
@@ -44,6 +48,7 @@ def userdata(user_id: str):
     
     # Crear el diccionario con los resultados
     result_dict = {
+        'user_id': user_id,  # Agregamos el user_id a la respuesta
         'total_spent': total_spent,
         'total_items_bought': total_items_bought,
         'recommendation_percentage': recommendation_percentage
