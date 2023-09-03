@@ -37,7 +37,13 @@ def userdata(user_id: str):
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
 
     # Filtrar los datos relevantes del usuario en df_item y hacer el join con steam
-    user_data = item[item['user_id'] == user_id].explode('item_id').merge(
+    user_data = item[item['user_id'] == user_id]
+    
+    # Verificar que item_id es una lista
+    if not isinstance(user_data['item_id'].iloc[0], list):
+        raise HTTPException(status_code=500, detail="item_id debe ser una lista")
+
+    user_data = user_data.explode('item_id').merge(
         steam[['item_id', 'price']], on='item_id', how='left')
     
     # Calcular el total gastado por el usuario
@@ -64,7 +70,6 @@ def userdata(user_id: str):
     }
     
     return result_dict
-
 
 
 @app.get('/reviews/{start_date}/{end_date}')
@@ -186,7 +191,7 @@ def sentiment_analysis(año: int):
 
 
 
-@app.get('/sentiment/{sentimiento}')
+@app.get('/Modelo/{genero}')
 
 
 def recomendacion_juego(id_producto, similarity_matrix, num_recomendaciones=5):
