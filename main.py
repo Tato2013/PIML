@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from fastapi import FastAPI, HTTPException, Path
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 
 app = FastAPI()
 
@@ -29,7 +31,7 @@ def root():
 #Funcion para devolver dinero gastado y recomendaciones
 
 @app.get('/user_id/{user_id}')
-def userdata(user_id: str = Path(..., title="User ID", description="ID del usuario a consultar")):
+def userdata(user_id: str):
     # Validar que el usuario exista en tus datos
     if user_id not in item['user_id'].values:
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
