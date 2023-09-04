@@ -16,6 +16,7 @@ reviews=pd.read_parquet('reviews.parquet')
 steam=pd.read_parquet('steam.parquet')
 item=pd.read_parquet('item.parquet')
 play_time=pd.read_parquet('play_time.parquet')
+ranking_genero = pd.read_parquet('raking_genero.parquet')
 
 # Variables globales
 
@@ -163,24 +164,21 @@ def countreviews(start_date: str, end_date: str):
 
 @app.get('/steam/{genero}')
 def genre(genero: str):
-    # Asegúrate de que 'steam' e 'item' sean accesibles dentro de esta función
-    global steam, play_time
+    # Filtra las filas en 'ranking_genero' para encontrar el género especificado
+    genero_info = ranking_genero[ranking_genero['genre'] == genero]
 
-    # Filtra las filas en 'steam' donde el género especificado tiene un valor de 1
-    steam_filtrado = steam[steam[genero] == 1]
-
-    # Verifica si hay datos disponibles para el género especificado
-    if steam_filtrado.empty:
+    # Verifica si el género especificado se encuentra en el DataFrame
+    if genero_info.empty:
         return {genero: "No encontrado en los datos"}
 
-    # Realiza la unión con 'play_time' en base a la columna 'item_id'
-    df_merged = pd.merge(steam_filtrado, play_time, on='item_id')
+    # Obtiene el puesto en el ranking para el género especificado
+    position = genero_info.index[0] + 1  # Suma 1 para obtener un ranking 1-indexed
 
-    # Calcula la suma total de 'playtime_forever' para el género especificado
-    total_playtime = df_merged['playtime_forever'].sum()
+    # Convierte el resultado a una cadena antes de devolverlo como respuesta JSON
+    result = {genero: str(position)}
 
-    # Devuelve un diccionario con el género y su suma total de playtime
-    return {genero: total_playtime}
+    return result
+
 
 
 @app.get('/userforgenre/{genero}')
