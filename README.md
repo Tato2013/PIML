@@ -17,7 +17,7 @@ Entre las consultas que te permite el sistema de recomendacion tienes las siguen
    - Datos Requeridos:
      - ID de Usuario de Steam.
    - Ejemplo:
-     
+     ```
      Consulta: userdata(User_id="12345")
      
      ```
