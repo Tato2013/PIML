@@ -29,7 +29,7 @@ async def load_data():
 
     
     # Selecciona las características relevantes para la similitud (por ejemplo, action, adventure, strategy)
-    features = steam[['action', 'adventure', 'strategy','earlyaccess','indie','free to play']]  # Añade todas las características relevantes
+    features = steam[['action', 'adventure', 'strategy','early access','indie','free to play']]  # Añade todas las características relevantes
     
     # Crea un modelo NearestNeighbors basado en similitud coseno
     nn = NearestNeighbors(n_neighbors=6, metric='cosine')
@@ -167,8 +167,8 @@ def genre(genero: str):
     global steam, play_time
 
     # Convierte la columna 'item_id' de 'steam' y 'play_time' al mismo tipo de datos (por ejemplo, str)
-    steam['item_id'] = steam['item_id'].astype(str)
-    play_time['item_id'] = play_time['item_id'].astype(str)
+    steam['item_id'] = steam['item_id'].astype(int)
+    play_time['item_id'] = play_time['item_id'].astype(int)
 
     # Filtra las filas en 'steam' donde el género especificado tiene un valor de 1
     steam_filtrado = steam[steam[genero] == 1]
