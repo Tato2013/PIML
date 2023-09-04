@@ -27,17 +27,17 @@ Entre las consultas que te permite el sistema de recomendacion tienes las siguen
    - Datos Requeridos:
      - ID de Usuario de Steam.
    - Ejemplo:
-     
+     ```
      Consulta: countreviews("2023-01-01", "2023-06-30")
 
-     ```
+    ```
 
 3. **Posición del Género en el Ranking**:
    - Descripción: Esta consulta devuelve el puesto en el que se encuentra un género en el ranking de géneros, analizado bajo la columna PlayTimeForever.
    - Datos Requeridos:
      - Género.
    - Ejemplo:
-     ```python
+     ```
      Consulta: genre(Género="Aventura")
   
      ```
@@ -47,16 +47,16 @@ Entre las consultas que te permite el sistema de recomendacion tienes las siguen
    - Datos Requeridos:
      - Género.
    - Ejemplo:
-     
+     ```
      Consulta: userforgenre(Género="Estrategia")
-     
+     ```
 
 5. **Información del Desarrollador**:
    - Descripción: Esta consulta devuelve la cantidad de items y el porcentaje de contenido gratuito por año para una empresa desarrolladora específica.
    - Datos Requeridos:
      - Nombre de la Empresa Desarrolladora.
    - Ejemplo:
-     
+     ```
      Consulta: developer(Desarrollador="Activision")
    
      ```
@@ -66,7 +66,7 @@ Entre las consultas que te permite el sistema de recomendacion tienes las siguen
    - Datos Requeridos:
      - Año de Lanzamiento.
    - Ejemplo:
-     
+     ```
      Consulta: sentiment_analysis(año=2021)
      
      ```
@@ -75,5 +75,7 @@ Entre las consultas que te permite el sistema de recomendacion tienes las siguen
    -Datos Requeridos:
      - Id del juego.
    -Ejemplo:
-    Consulta:recomendacion_usuario( id de usuario= 12345) 
+   ```
+    Consulta:recomendacion_usuario( id de usuario= 12345)
+   ```
 Estas consultas proporcionan una variedad de funcionalidades útiles para los usuarios de Steam y ayudarán a mejorar su experiencia en la plataforma.
