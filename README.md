@@ -27,10 +27,11 @@ Entre las consultas que te permite el sistema de recomendacion tienes las siguen
    - Datos Requeridos:
      - ID de Usuario de Steam.
    - Ejemplo:
+
      ```
      Consulta: countreviews("2023-01-01", "2023-06-30")
 
-    ```
+     ```
 
 3. **Posición del Género en el Ranking**:
    - Descripción: Esta consulta devuelve el puesto en el que se encuentra un género en el ranking de géneros, analizado bajo la columna PlayTimeForever.
