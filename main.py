@@ -116,9 +116,9 @@ def userdata(user_id: str):
     
     # Crear el diccionario con los resultados
     result_dict = {
-        'total_spent': int(total_spent),
-        'total_items_bought': int(total_items_bought),
-        'recommendation_percentage': float(recommendation_percentage)
+        'Total Gastado': int(total_spent),
+        'Total Comprado': int(total_items_bought),
+        'Porcentaje de Recomendacion': float(recommendation_percentage)
     }
     
     return result_dict
@@ -153,8 +153,8 @@ def countreviews(start_date: str, end_date: str):
         recommendation_percentage = 0.0
     
     result = {
-        'unique_users': unique_users,
-        'recommendation_percentage': recommendation_percentage
+        'Cantidad de usuarios': unique_users,
+        'Porcentaje de recomendaciones ': recommendation_percentage
     }
     
     return result
@@ -165,10 +165,6 @@ def countreviews(start_date: str, end_date: str):
 def genre(genero: str):
     # Asegúrate de que 'steam' e 'item' sean accesibles dentro de esta función
     global steam, play_time
-
-    # Convierte la columna 'item_id' de 'steam' y 'play_time' al mismo tipo de datos (por ejemplo, str)
-    steam['item_id'] = steam['item_id'].astype(int)
-    play_time['item_id'] = play_time['item_id'].astype(int)
 
     # Filtra las filas en 'steam' donde el género especificado tiene un valor de 1
     steam_filtrado = steam[steam[genero] == 1]
