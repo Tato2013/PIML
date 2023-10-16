@@ -95,7 +95,7 @@ Entre las consultas que te permite el sistema de recomendacion tienes las siguen
    ```
 Estas consultas proporcionan una variedad de funcionalidades útiles para los usuarios de Steam y ayudarán a mejorar su experiencia en la plataforma.
 
-Informacion de contacto
+## Informacion de contacto
 
 **LinkedIn**: [Marcelo Peralta](https://www.linkedin.com/in/marcelo-peralta2)
 
