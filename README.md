@@ -7,6 +7,20 @@ lo que lleva a una experiencia de usuario menos satisfactoria y a la posibilidad
 Por eso vengo a ofrecer un modelo de recomendacion basado en gusto de juegos que otros usuarios han jugado y pueden ser tu agrado y te voy a proporcionar la posibilidad de hacer otras consultas para que tengas mayor
 informarcion que puede ser de tu interes.
 
+## Tecnologías Utilizadas
+
+    Librerías para el Análisis:
+        Pandas y NumPy: Utilizados para la limpieza de datos.
+        Matplotlib y Seaborn: Utilizados para crear gráficos y realizar el análisis visual.
+        NLTK (Natural Language Toolkit) - Sentiment Vader: Empleado para calcular un puntaje de sentimiento basado en las opiniones de los usuarios.
+
+    Para el Modelo de Recomendación se Utilizó:
+        Scikit-Learn Neighbors: Implementado para desarrollar el modelo de recomendación.
+
+    Para el Consumo del Sistema:
+        FastAPI: Utilizado para montar la API y el modelo de recomendación.
+        Render: Herramienta empleada para el despliegue (deploy) del sistema.
+   
 
 ## Consultas Disponibles
 
@@ -80,3 +94,11 @@ Entre las consultas que te permite el sistema de recomendacion tienes las siguen
     Consulta:recomendacion_usuario( id de usuario= 12345)
    ```
 Estas consultas proporcionan una variedad de funcionalidades útiles para los usuarios de Steam y ayudarán a mejorar su experiencia en la plataforma.
+
+Informacion de contacto
+
+**LinkedIn**: [Marcelo Peralta](https://www.linkedin.com/in/marcelo-peralta2)
+
+**Telefono**:[+5492616325753](https://wa.me/+5492616325753) (Mejor escribir primero al whatsapp)
+
+**mail**: [cheloperalta22@gmail.com](mailto:cheloperalta22@gmail.com)
