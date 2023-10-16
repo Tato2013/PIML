@@ -180,8 +180,8 @@ def genre(genero: str):
     return result
 
 
-
-@app.get('/userforgenre/{genero}')
+#Se saco por su consumo se mejorar utilizando docker o buscando optimizar el acceso a los datos 
+'''@app.get('/userforgenre/{genero}')
 def userforgenre(genero: str):
     # Filtra el DataFrame 'steam' por el género deseado
     genre_items = steam[steam[genero] == 1]
@@ -204,7 +204,7 @@ def userforgenre(genero: str):
     top_users = top_users.merge(item[['user_id', 'user_url']], on='user_id', how='left')
     
     # Convierte el DataFrame a un diccionario y devuélvelo
-    return top_users[['user_id', 'user_url', 'playtime_forever']].to_dict('records')
+    return top_users[['user_id', 'user_url', 'playtime_forever']].to_dict('records')'''
 
 
 
